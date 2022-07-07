@@ -1,0 +1,55 @@
+class User {
+    constructor(username,email,password){
+    this.username = username;
+    this.email = email;
+    this.password = password;
+    }
+    register(){
+        console.log(`${this.username} is now registered`);
+        
+        console.log(`Date of Registration : ${dateOfRegistration}`);
+        numberOfUsers ++;
+    }
+    static registeredUsers(){
+        console.log(`There are ${numberOfUsers} users registered`);
+    }
+}
+
+class Membership extends User {
+    constructor(username,email,password,purchasedPackage){
+    super(username,email,password);
+    this.purchasedPackage = purchasedPackage;
+    }
+    
+    Membershipactivetilldate () {
+        let current_month = dateOfRegistration.getMonth();
+        let current_day = dateOfRegistration.getDate();
+        let current_year = dateOfRegistration.getFullYear();
+        switch(this.purchasedPackage) {
+            case "Trial" : 
+            
+            console.log(`Membership valid till ${new Date(current_year,current_month+1,current_day)}`);
+            break;
+            case "Standard" : 
+            
+            console.log(`Membership valid till ${new Date(current_year,current_month+1,current_day)}`);
+            break;
+            case "Yearly" : 
+            
+            console.log(`Membership valid till ${new Date(current_year+1,current_month,current_day)}`);
+            break;
+        }
+    }
+}
+let numberOfUsers = 0;
+let bob = new Membership("Bob","bob@gmail.com","Password123","Trial");
+let Arun = new Membership("Arun","arun@gmail.com","Password456","Standard");
+let Vijay = new Membership("Vijay","vijay@gmail.com","Password789","Yearly");
+let dateOfRegistration= new Date();
+bob.register();
+Arun.register();
+Vijay.register();
+
+bob.Membershipactivetilldate();
+Arun.Membershipactivetilldate();
+Vijay.Membershipactivetilldate();
